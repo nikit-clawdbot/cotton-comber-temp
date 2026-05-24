@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Cotton + Comber Market Pulse</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns"></script>
+<script src="historical-data.js"></script>
+<style>
+:root{
+  --bg:#080b0c;--panel:#101615;--panel2:#141d1b;--ink:#eef4ef;--muted:#91a19a;--line:#26332f;
+  --gold:#d8ad67;--green:#38c172;--red:#f05252;--blue:#60a5fa;--teal:#2dd4bf;--orange:#fb923c;
+  --shadow:0 18px 50px rgba(0,0,0,.32);--radius:18px;
+}
+*{box-sizing:border-box} body{margin:0;background:radial-gradient(circle at 15% -10%,#1f2f29 0,transparent 36%),linear-gradient(135deg,#080b0c,#0d1117 60%,#0a0d0c);color:var(--ink);font-family:Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,Arial,sans-serif;line-height:1.45}
+.wrap{max-width:1480px;margin:auto;padding:18px}.top{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;margin-bottom:16px}.brand{background:linear-gradient(135deg,rgba(216,173,103,.16),rgba(45,212,191,.08));border:1px solid rgba(216,173,103,.25);border-radius:24px;padding:18px 20px;box-shadow:var(--shadow);flex:1}.eyebrow{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);font-weight:800}.brand h1{margin:6px 0 6px;font-size:clamp(25px,3.4vw,48px);line-height:1.02}.brand p{margin:0;color:var(--muted);max-width:920px}.status{min-width:260px;background:var(--panel);border:1px solid var(--line);border-radius:20px;padding:16px;box-shadow:var(--shadow)}.status .big{font-size:28px;font-weight:900;margin:4px 0}.pill{display:inline-flex;align-items:center;gap:6px;border-radius:999px;padding:6px 10px;font-size:12px;font-weight:800;background:#17211e;border:1px solid var(--line);color:var(--muted)}.pill.good{color:#b9f6cf;border-color:rgba(56,193,114,.35);background:rgba(56,193,114,.10)}.pill.bad{color:#ffd0d0;border-color:rgba(240,82,82,.4);background:rgba(240,82,82,.10)}.grid{display:grid;gap:14px}.kpis{grid-template-columns:repeat(6,minmax(0,1fr));margin-bottom:14px}.card,.panel{background:linear-gradient(180deg,rgba(20,29,27,.96),rgba(13,18,17,.98));border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow)}.card{padding:14px}.label{color:var(--muted);font-size:12px;text-transform:uppercase;letter-spacing:.08em;font-weight:800}.value{font-size:25px;font-weight:900;margin:5px 0}.sub{color:var(--muted);font-size:12px}.chg.up{color:var(--green)}.chg.down{color:var(--red)}.main{grid-template-columns:1.25fr .75fr}.panel{padding:16px;min-height:260px}.panel h2{margin:0 0 12px;color:var(--gold);font-size:18px}.panel h3{margin:0 0 8px;font-size:15px}.canvasBox{height:360px}.signal{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px;border-radius:16px;background:#0b1110;border:1px solid var(--line);margin-bottom:12px}.signal .score{font-size:42px;font-weight:950}.signal .title{font-size:18px;font-weight:900}.reasons{display:grid;gap:9px}.reason{display:flex;justify-content:space-between;gap:10px;padding:10px;border-radius:12px;background:#101917;border:1px solid #20302b}.reason b{color:#e9f3ed}.reason span:last-child{font-weight:900}.two{grid-template-columns:1fr 1fr;margin-top:14px}.sources{grid-template-columns:repeat(4,minmax(0,1fr));margin-top:14px}.source{padding:14px}.source a{color:var(--gold);text-decoration:none;font-weight:800}.source p{margin:.35rem 0 0;color:var(--muted);font-size:12px}.tools{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}.btn{background:#17211e;border:1px solid var(--line);color:var(--ink);padding:9px 12px;border-radius:12px;cursor:pointer;font-weight:800}.btn:hover{border-color:var(--gold)}table{width:100%;border-collapse:collapse;font-size:13px}th,td{padding:10px;border-bottom:1px solid var(--line);text-align:left}th{color:var(--gold);font-size:12px;text-transform:uppercase}td{color:#dbe7df}.note{color:var(--muted);font-size:12px;margin-top:10px}.formula{font-family:ui-monospace,Menlo,monospace;background:#0b1110;border:1px solid var(--line);border-radius:14px;padding:12px;color:#b7c7bf;overflow:auto}.footer{margin:18px 0;color:var(--muted);font-size:12px}.warn{color:#ffd89a}.hide{display:none!important}
+@media(max-width:1100px){.kpis{grid-template-columns:repeat(3,1fr)}.main,.two,.sources{grid-template-columns:1fr}.top{flex-direction:column}.status{width:100%}}
+@media(max-width:640px){.wrap{padding:10px}.kpis{grid-template-columns:1fr 1fr}.value{font-size:20px}.canvasBox{height:300px}.signal .score{font-size:34px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <section class="top">
+    <div class="brand">
+      <div class="eyebrow">Mahaveer Cotton Intelligence</div>
+      <h1>Indian Cotton Market → Comber Price Dashboard</h1>
+      <p>Daily live-reference dashboard for ICE, Cotlook, NCDEX Cocud/Kapas, Indian arrivals, CCI sales, USD/INR, WTI, China and Brazil signals — converted into a simple cotton/comber market view.</p>
+      <div class="tools"><button class="btn" onclick="refreshNow()">Refresh sample/live feed</button><button class="btn" onclick="downloadCSV()">Download current CSV</button><button class="btn" onclick="toggleSources()">Show source map</button></div>
+    </div>
+    <div class="status">
+      <div class="label">Market Bias</div>
+      <div class="big" id="biasText">Neutral</div>
+      <span class="pill" id="updatedPill">loading...</span>
+      <div class="note">This is a decision-support signal, not blind buy/sell advice. Local mill supply and tender behaviour still matter most for comber.</div>
+    </div>
+  </section>
+
+  <section class="grid kpis" id="kpiGrid"></section>
+
+  <section class="grid main">
+    <div class="panel">
+      <h2>Comber Direction Model</h2>
+      <div class="canvasBox"><canvas id="modelChart"></canvas></div>
+      <div class="note">Model blends raw cotton strength, ICE direction, Indian arrivals tightness, CCI sales pressure, FX/import parity, China demand and polyester substitution.</div>
+    </div>
+    <div class="panel">
+      <h2>Today’s Read</h2>
+      <div class="signal" id="signalBox"><div><div class="title" id="signalTitle">Loading</div><div class="sub" id="signalSub">Calculating drivers...</div></div><div class="score" id="scoreVal">0</div></div>
+      <div class="reasons" id="reasons"></div>
+    </div>
+  </section>
+
+  <section class="grid two">
+    <div class="panel">
+      <h2>Live Watchlist Movement</h2>
+      <div class="canvasBox"><canvas id="watchChart"></canvas></div>
+    </div>
+    <div class="panel">
+      <h2>Comber Impact Matrix</h2>
+      <table id="impactTable"></table>
+      <div class="note">Positive = supports comber price. Negative = pressure on comber price.</div>
+    </div>
+  </section>
+
+  <section class="grid two">
+    <div class="panel">
+      <h2>Hedge / Risk Guidance</h2>
+      <div id="hedgeText"></div>
+      <div class="formula">
+Open stock risk: if physical cotton/comber held and ICE + Indian spot both weaken → protect by selling ICE / reducing inventory.<br>
+Forward-sale risk: if sold forward and raw cotton tightens → protect by buying ICE / call option.<br>
+FX risk: import/export exposure → USD/INR forward or option.
+      </div>
+    </div>
+    <div class="panel">
+      <h2>Historical Comber Context</h2>
+      <div class="canvasBox"><canvas id="historyChart"></canvas></div>
+    </div>
+  </section>
+
+  <section class="grid sources hide" id="sourceMap">
+    <div class="card source"><div class="label">ICE Cotton</div><a href="https://www.ice.com/products/254/Cotton-No-2-Futures/data" target="_blank">ICE official</a><p>Official futures data; live market feed usually paid. Delayed public available.</p></div>
+    <div class="card source"><div class="label">NCDEX Cocud/Kapas</div><a href="https://ncdex.com/index.php/market-watch/live_quotes" target="_blank">NCDEX live quotes</a><p>COCUDAKL, Kapas, live/delayed open-close, OI, volume.</p></div>
+    <div class="card source"><div class="label">Arrivals</div><a href="https://in-cai.in/pages/state-wise-estimates-of-daily-cotton-arrivals" target="_blank">CAI arrivals</a><p>State-wise Indian cotton arrival estimates.</p></div>
+    <div class="card source"><div class="label">CCI Sales</div><a href="https://cotcorp.websteptech.co.uk/domestic-sales" target="_blank">CCI domestic sales</a><p>Official sale notices / COTBIZ. Weekly summaries may need backup source.</p></div>
+    <div class="card source"><div class="label">Cotlook A</div><a href="https://www.cotlook.com/prices/cotlook-a-index/" target="_blank">Cotlook</a><p>Official daily index; timely full data is subscription.</p></div>
+    <div class="card source"><div class="label">China</div><a href="http://www.cnce.cn/index.php" target="_blank">CNCE / CTEI</a><p>CC3128B, FC Index M; Chinese sources may be delayed/login.</p></div>
+    <div class="card source"><div class="label">Brazil</div><a href="https://cepea.org.br/br/indicador/algodao.aspx" target="_blank">CEPEA/ESALQ</a><p>Brazil physical cotton indicator.</p></div>
+    <div class="card source"><div class="label">USD/INR + WTI</div><a href="https://www.fbil.org.in/" target="_blank">FBIL / CME</a><p>FX reference + crude oil for polyester/substitution pressure.</p></div>
+  </section>
+
+  <section class="panel" style="margin-top:14px">
+    <h2>Current Data Table</h2>
+    <table id="dataTable"></table>
+    <div class="note">In production, these rows should be refreshed by a small daily cron/worker and stored in Turso/Sheets. Prototype currently ships with sample current data + old historical comber/cotton series.</div>
+  </section>
+
+  <div class="footer">Built for cotton/comber decision support. Last local render: <span id="renderTime"></span></div>
+</div>
+
+<script>
+const sampleFeed = {
+  asOf: '2026-05-23',
+  metrics: [
+    {key:'cotlook_a', name:'Cotlook A', value:88.00, prev:90.65, unit:'¢/lb', source:'Cotlook'},
+    {key:'fc_index_m', name:'FC Index M', value:89.84, prev:92.23, unit:'¢/lb', source:'CTEI/CNCE'},
+    {key:'brazil_cotton', name:'Brazil Cotton', value:84.70, prev:83.70, unit:'¢/lb', source:'CEPEA'},
+    {key:'ice_jul', name:'ICE Jul-26', value:77.42, prev:83.70, unit:'¢/lb', source:'ICE'},
+    {key:'ice_dec', name:'ICE Dec-26', value:79.33, prev:83.98, unit:'¢/lb', source:'ICE'},
+    {key:'china_3128b', name:'China CC3128B', value:17603, prev:17703, unit:'CNY/MT', source:'CNCE'},
+    {key:'zce_cotton', name:'ZCE Cotton Jul', value:15710, prev:15905, unit:'CNY/MT', source:'ZCE'},
+    {key:'zce_yarn', name:'ZCE Yarn Mar', value:22015, prev:22090, unit:'CNY/MT', source:'ZCE'},
+    {key:'ncdex_cocud_jun', name:'NCDEX Cocud Jun', value:3552, prev:3555, unit:'₹/qtl', source:'NCDEX'},
+    {key:'ncdex_cocud_akola', name:'Cocud Akola Jul', value:3616, prev:3656, unit:'₹/qtl', source:'NCDEX'},
+    {key:'usd_inr', name:'USD/INR', value:95.70, prev:96.35, unit:'₹', source:'NSE/FBIL'},
+    {key:'wti', name:'WTI Jul', value:96.60, prev:104.38, unit:'$/bbl', source:'CME'},
+    {key:'weekly_arrivals', name:'Weekly Arrivals', value:2.35, prev:2.55, unit:'lakh bales', source:'CAI est.'},
+    {key:'arrival_till_date', name:'Arrivals T.D.', value:315.00, prev:312.65, unit:'lakh bales', source:'CAI est.'},
+    {key:'cci_weekly_sales', name:'CCI weekly sales', value:11600, prev:18000, unit:'bales', source:'CCI'},
+    {key:'cci_season_sales', name:'CCI season sales', value:7031400, prev:7019800, unit:'bales', source:'CCI'}
+  ]
+};
+let feed = sampleFeed;
+function fmt(n){ if(n===null||n===undefined) return '—'; return Math.abs(n)>=100000 ? n.toLocaleString('en-IN') : (Number.isInteger(n)?n.toLocaleString('en-IN'):n.toLocaleString('en-IN',{maximumFractionDigits:2})); }
+function pct(m){return ((m.value-m.prev)/m.prev)*100}
+function changeClass(p){return p>=0?'up':'down'}
+function get(k){return feed.metrics.find(m=>m.key===k)}
+function scoreMetric(k, weight, bullishWhen='up'){
+  const m=get(k); if(!m||!m.prev) return {label:k, score:0, pct:0};
+  const p=pct(m); const dir = bullishWhen==='up' ? Math.sign(p) : -Math.sign(p);
+  const mag=Math.min(Math.abs(p)/3,1); // 3% move = full weight
+  return {label:m.name, score:dir*weight*mag, pct:p, unit:m.unit};
+}
+function computeModel(){
+  const drivers=[
+    scoreMetric('ice_jul',18,'up'),
+    scoreMetric('cotlook_a',14,'up'),
+    scoreMetric('ncdex_cocud_jun',12,'up'),
+    scoreMetric('weekly_arrivals',16,'down'),
+    scoreMetric('cci_weekly_sales',12,'down'),
+    scoreMetric('china_3128b',10,'up'),
+    scoreMetric('zce_yarn',8,'up'),
+    scoreMetric('usd_inr',5,'up'),
+    scoreMetric('wti',5,'up'),
+  ];
+  const raw=drivers.reduce((a,b)=>a+b.score,0);
+  const score=Math.max(-100,Math.min(100,Math.round(raw)));
+  let bias='Neutral', klass='';
+  if(score>=25){bias='Bullish / firm comber'; klass='good'} else if(score<=-25){bias='Bearish / soft comber'; klass='bad'} else if(score>5){bias='Mild firm'; klass='good'} else if(score<-5){bias='Mild soft'; klass='bad'}
+  return {score,bias,klass,drivers};
+}
+function render(){
+  const model=computeModel();
+  document.getElementById('biasText').textContent=model.bias;
+  const pill=document.getElementById('updatedPill'); pill.textContent='as of '+feed.asOf; pill.className='pill '+model.klass;
+  document.getElementById('scoreVal').textContent=model.score;
+  document.getElementById('signalTitle').textContent=model.bias;
+  document.getElementById('signalSub').textContent=model.score>0?'More support to comber than pressure':'More pressure on comber than support';
+  document.getElementById('signalBox').style.borderColor=model.score>=0?'rgba(56,193,114,.35)':'rgba(240,82,82,.4)';
+  const kpiKeys=['ice_jul','cotlook_a','ncdex_cocud_jun','weekly_arrivals','cci_weekly_sales','usd_inr'];
+  document.getElementById('kpiGrid').innerHTML=kpiKeys.map(k=>{const m=get(k),p=pct(m);return `<div class="card"><div class="label">${m.name}</div><div class="value">${fmt(m.value)} <small>${m.unit}</small></div><div class="sub"><span class="chg ${changeClass(p)}">${p>=0?'+':''}${p.toFixed(2)}%</span> vs open/prev · ${m.source}</div></div>`}).join('');
+  const topDrivers=[...model.drivers].sort((a,b)=>Math.abs(b.score)-Math.abs(a.score)).slice(0,7);
+  document.getElementById('reasons').innerHTML=topDrivers.map(d=>`<div class="reason"><span><b>${d.label}</b><br><small class="sub">${d.pct>=0?'+':''}${d.pct.toFixed(2)}%</small></span><span class="${d.score>=0?'chg up':'chg down'}">${d.score>=0?'+':''}${d.score.toFixed(1)}</span></div>`).join('');
+  const impactRows=model.drivers.map(d=>[d.label,d.pct,d.score]).sort((a,b)=>b[2]-a[2]);
+  document.getElementById('impactTable').innerHTML='<tr><th>Driver</th><th>Move</th><th>Comber impact</th></tr>'+impactRows.map(r=>`<tr><td>${r[0]}</td><td class="chg ${changeClass(r[1])}">${r[1]>=0?'+':''}${r[1].toFixed(2)}%</td><td class="${r[2]>=0?'chg up':'chg down'}">${r[2]>=0?'+':''}${r[2].toFixed(1)}</td></tr>`).join('');
+  document.getElementById('hedgeText').innerHTML = model.score<=-25 ? '<p><b class="chg down">Soft-risk:</b> avoid heavy open stock. If holding comber/cotton, reduce exposure or hedge. Buyers can wait for confirmation unless local supply is tight.</p>' : model.score>=25 ? '<p><b class="chg up">Firm-risk:</b> forward-sale risk is higher. Cover raw material before committing long delivery. Consider call/ICE protection if short physical.</p>' : '<p><b class="warn">Balanced:</b> keep stock light, buy confirmed quality lots, and watch ICE + arrivals for breakout.</p>';
+  document.getElementById('dataTable').innerHTML='<tr><th>Metric</th><th>Value</th><th>Prev/Open</th><th>Move</th><th>Source</th></tr>'+feed.metrics.map(m=>{const p=pct(m);return `<tr><td>${m.name}</td><td>${fmt(m.value)} ${m.unit}</td><td>${fmt(m.prev)} ${m.unit}</td><td class="chg ${changeClass(p)}">${p>=0?'+':''}${p.toFixed(2)}%</td><td>${m.source}</td></tr>`}).join('');
+  document.getElementById('renderTime').textContent=new Date().toLocaleString('en-IN');
+  drawCharts(model);
+}
+let modelChart,watchChart,historyChart;
+function seriesFromFeed(keys){return keys.map(k=>{const m=get(k); return {label:m.name, data:[{x:'2026-05-18',y:m.prev},{x:feed.asOf,y:m.value}], borderWidth:2, pointRadius:4, tension:.25};});}
+function drawCharts(model){
+  if(modelChart) modelChart.destroy(); if(watchChart) watchChart.destroy(); if(historyChart) historyChart.destroy();
+  const common={responsive:true,maintainAspectRatio:false,plugins:{legend:{labels:{color:'#cfd8d3'}}},scales:{x:{grid:{color:'rgba(255,255,255,.06)'},ticks:{color:'#91a19a'}},y:{grid:{color:'rgba(255,255,255,.06)'},ticks:{color:'#91a19a'}}}};
+  modelChart=new Chart(document.getElementById('modelChart'),{type:'bar',data:{labels:model.drivers.map(d=>d.label),datasets:[{label:'Comber impact score',data:model.drivers.map(d=>d.score),backgroundColor:model.drivers.map(d=>d.score>=0?'rgba(56,193,114,.72)':'rgba(240,82,82,.72)'),borderColor:model.drivers.map(d=>d.score>=0?'#38c172':'#f05252'),borderWidth:1}]},options:{...common,indexAxis:'y'}});
+  watchChart=new Chart(document.getElementById('watchChart'),{type:'line',data:{datasets:seriesFromFeed(['ice_jul','cotlook_a','ncdex_cocud_jun','china_3128b','usd_inr','wti']).map((d,i)=>({...d,borderColor:['#60a5fa','#d8ad67','#2dd4bf','#fb923c','#a78bfa','#38c172'][i]}))},options:{...common,scales:{x:{type:'time',time:{unit:'day'},grid:{color:'rgba(255,255,255,.06)'},ticks:{color:'#91a19a'}},y:{grid:{color:'rgba(255,255,255,.06)'},ticks:{color:'#91a19a'}}}}});
+  const hist=(window.D&&D.comber_panipat?D.comber_panipat:[]).map(p=>({x:p.d,y:p.v}));
+  historyChart=new Chart(document.getElementById('historyChart'),{type:'line',data:{datasets:[{label:'Comber Panipat ₹/kg',data:hist,borderColor:'#2dd4bf',backgroundColor:'rgba(45,212,191,.12)',fill:true,pointRadius:0,tension:.32},{label:'Latest Shine Cotspin ref ₹134',data:[{x:'2026-04-09',y:134},{x:feed.asOf,y:134}],borderColor:'#d8ad67',borderDash:[6,5],pointRadius:0}]},options:{...common,scales:{x:{type:'time',time:{unit:'quarter'},grid:{color:'rgba(255,255,255,.06)'},ticks:{color:'#91a19a'}},y:{grid:{color:'rgba(255,255,255,.06)'},ticks:{color:'#91a19a'}}}}});
+}
+async function refreshNow(){
+  try{
+    const res=await fetch('live-data.json?ts='+Date.now());
+    if(res.ok){feed=await res.json(); render(); return;}
+  }catch(e){}
+  alert('Using built-in sample feed. Add/update live-data.json or connect the worker fetchers for true daily live refresh.');
+  render();
+}
+function toggleSources(){document.getElementById('sourceMap').classList.toggle('hide')}
+function downloadCSV(){
+  const lines=['metric,value,prev,unit,move_pct,source'].concat(feed.metrics.map(m=>`${m.name},${m.value},${m.prev},${m.unit},${pct(m).toFixed(4)},${m.source}`));
+  const blob=new Blob([lines.join('\n')],{type:'text/csv'}); const a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download='cotton-comber-current.csv'; a.click(); URL.revokeObjectURL(a.href);
+}
+render();
+</script>
+</body>
+</html>
