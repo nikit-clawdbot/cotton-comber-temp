@@ -15,6 +15,9 @@
 }
 *{box-sizing:border-box} body{margin:0;background:radial-gradient(circle at 15% -10%,#1f2f29 0,transparent 36%),linear-gradient(135deg,#080b0c,#0d1117 60%,#0a0d0c);color:var(--ink);font-family:Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,Arial,sans-serif;line-height:1.45}
 .wrap{max-width:1480px;margin:auto;padding:18px}.top{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;margin-bottom:16px}.brand{background:linear-gradient(135deg,rgba(216,173,103,.16),rgba(45,212,191,.08));border:1px solid rgba(216,173,103,.25);border-radius:24px;padding:18px 20px;box-shadow:var(--shadow);flex:1}.eyebrow{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);font-weight:800}.brand h1{margin:6px 0 6px;font-size:clamp(25px,3.4vw,48px);line-height:1.02}.brand p{margin:0;color:var(--muted);max-width:920px}.status{min-width:260px;background:var(--panel);border:1px solid var(--line);border-radius:20px;padding:16px;box-shadow:var(--shadow)}.status .big{font-size:28px;font-weight:900;margin:4px 0}.pill{display:inline-flex;align-items:center;gap:6px;border-radius:999px;padding:6px 10px;font-size:12px;font-weight:800;background:#17211e;border:1px solid var(--line);color:var(--muted)}.pill.good{color:#b9f6cf;border-color:rgba(56,193,114,.35);background:rgba(56,193,114,.10)}.pill.bad{color:#ffd0d0;border-color:rgba(240,82,82,.4);background:rgba(240,82,82,.10)}.grid{display:grid;gap:14px}.kpis{grid-template-columns:repeat(6,minmax(0,1fr));margin-bottom:14px}.card,.panel{background:linear-gradient(180deg,rgba(20,29,27,.96),rgba(13,18,17,.98));border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow)}.card{padding:14px}.label{color:var(--muted);font-size:12px;text-transform:uppercase;letter-spacing:.08em;font-weight:800}.value{font-size:25px;font-weight:900;margin:5px 0}.sub{color:var(--muted);font-size:12px}.chg.up{color:var(--green)}.chg.down{color:var(--red)}.main{grid-template-columns:1.25fr .75fr}.panel{padding:16px;min-height:260px}.panel h2{margin:0 0 12px;color:var(--gold);font-size:18px}.panel h3{margin:0 0 8px;font-size:15px}.canvasBox{height:360px}.signal{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px;border-radius:16px;background:#0b1110;border:1px solid var(--line);margin-bottom:12px}.signal .score{font-size:42px;font-weight:950}.signal .title{font-size:18px;font-weight:900}.reasons{display:grid;gap:9px}.reason{display:flex;justify-content:space-between;gap:10px;padding:10px;border-radius:12px;background:#101917;border:1px solid #20302b}.reason b{color:#e9f3ed}.reason span:last-child{font-weight:900}.two{grid-template-columns:1fr 1fr;margin-top:14px}.sources{grid-template-columns:repeat(4,minmax(0,1fr));margin-top:14px}.source{padding:14px}.source a{color:var(--gold);text-decoration:none;font-weight:800}.source p{margin:.35rem 0 0;color:var(--muted);font-size:12px}.tools{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}.btn{background:#17211e;border:1px solid var(--line);color:var(--ink);padding:9px 12px;border-radius:12px;cursor:pointer;font-weight:800}.btn:hover{border-color:var(--gold)}table{width:100%;border-collapse:collapse;font-size:13px}th,td{padding:10px;border-bottom:1px solid var(--line);text-align:left}th{color:var(--gold);font-size:12px;text-transform:uppercase}td{color:#dbe7df}.note{color:var(--muted);font-size:12px;margin-top:10px}.formula{font-family:ui-monospace,Menlo,monospace;background:#0b1110;border:1px solid var(--line);border-radius:14px;padding:12px;color:#b7c7bf;overflow:auto}.footer{margin:18px 0;color:var(--muted);font-size:12px}.warn{color:#ffd89a}.hide{display:none!important}
+.analystGrid{display:grid;grid-template-columns:1.1fr .9fr;gap:14px;margin-top:14px}.thesis{display:grid;gap:10px}.thesisItem{padding:12px;border-radius:14px;background:#0b1110;border:1px solid var(--line)}.thesisItem strong{color:var(--gold)}.heat{display:grid;grid-template-columns:repeat(5,1fr);gap:8px}.heatCell{padding:10px;border-radius:12px;background:#101917;border:1px solid var(--line);text-align:center}.heatCell .n{font-size:20px;font-weight:950}.scenarioCards{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.scenario{padding:13px;border-radius:16px;background:#0b1110;border:1px solid var(--line)}.scenario b{display:block;color:var(--gold);margin-bottom:5px}.scenario .prob{font-size:24px;font-weight:950}.driverTag{display:inline-block;margin:3px 4px 3px 0;padding:4px 8px;border-radius:999px;background:#17211e;border:1px solid var(--line);font-size:12px;color:#cfd8d3}.meter{height:12px;background:#1b2622;border-radius:999px;overflow:hidden;border:1px solid var(--line)}.meter span{display:block;height:100%;background:linear-gradient(90deg,var(--red),var(--gold),var(--green));width:50%}.callout{border-left:4px solid var(--gold);padding:12px 14px;background:#0b1110;border-radius:12px;color:#dce8e0}
+@media(max-width:1100px){.analystGrid,.scenarioCards{grid-template-columns:1fr}.heat{grid-template-columns:1fr 1fr}}
+
 @media(max-width:1100px){.kpis{grid-template-columns:repeat(3,1fr)}.main,.two,.sources{grid-template-columns:1fr}.top{flex-direction:column}.status{width:100%}}
 @media(max-width:640px){.wrap{padding:10px}.kpis{grid-template-columns:1fr 1fr}.value{font-size:20px}.canvasBox{height:300px}.signal .score{font-size:34px}}
 </style>
@@ -62,6 +65,33 @@
       <div class="note">Positive = supports comber price. Negative = pressure on comber price.</div>
     </div>
   </section>
+
+
+
+  <section class="grid analystGrid">
+    <div class="panel">
+      <h2>Market Analyst View: Impact on Cotton Comber</h2>
+      <div class="callout" id="analystHeadline">Building market read...</div>
+      <div class="thesis" id="analystThesis" style="margin-top:12px"></div>
+    </div>
+    <div class="panel">
+      <h2>Comber Outlook Scenarios</h2>
+      <div class="scenarioCards" id="scenarios"></div>
+      <div class="note">Short-term = 3–10 days. Medium-term = 2–4 weeks. Long-term depends on arrivals + mill stock + yarn demand.</div>
+    </div>
+  </section>
+
+  <section class="grid two">
+    <div class="panel">
+      <h2>Signal Heatmap</h2>
+      <div class="heat" id="heatmap"></div>
+    </div>
+    <div class="panel">
+      <h2>Trade Action Framework</h2>
+      <div id="actionFramework"></div>
+    </div>
+  </section>
+
 
   <section class="grid two">
     <div class="panel">
@@ -126,23 +156,30 @@ function fmt(n){ if(n===null||n===undefined) return '—'; return Math.abs(n)>=1
 function pct(m){return ((m.value-m.prev)/m.prev)*100}
 function changeClass(p){return p>=0?'up':'down'}
 function get(k){return feed.metrics.find(m=>m.key===k)}
-function scoreMetric(k, weight, bullishWhen='up'){
-  const m=get(k); if(!m||!m.prev) return {label:k, score:0, pct:0};
+function scoreMetric(k, weight, bullishWhen='up', group='market'){
+  const m=get(k); if(!m||!m.prev) return {key:k,label:k, score:0, pct:0, group};
   const p=pct(m); const dir = bullishWhen==='up' ? Math.sign(p) : -Math.sign(p);
   const mag=Math.min(Math.abs(p)/3,1); // 3% move = full weight
-  return {label:m.name, score:dir*weight*mag, pct:p, unit:m.unit};
+  return {key:k,label:m.name, score:dir*weight*mag, pct:p, unit:m.unit, group, value:m.value, prev:m.prev};
 }
 function computeModel(){
   const drivers=[
-    scoreMetric('ice_jul',18,'up'),
-    scoreMetric('cotlook_a',14,'up'),
-    scoreMetric('ncdex_cocud_jun',12,'up'),
-    scoreMetric('weekly_arrivals',16,'down'),
-    scoreMetric('cci_weekly_sales',12,'down'),
-    scoreMetric('china_3128b',10,'up'),
-    scoreMetric('zce_yarn',8,'up'),
-    scoreMetric('usd_inr',5,'up'),
-    scoreMetric('wti',5,'up'),
+    scoreMetric('ice_jul',14,'up','Global futures'),
+    scoreMetric('ice_dec',8,'up','Global futures'),
+    scoreMetric('cotlook_a',11,'up','World physical'),
+    scoreMetric('fc_index_m',7,'up','Import parity'),
+    scoreMetric('brazil_cotton',5,'up','Export competitor'),
+    scoreMetric('ncdex_cocud_jun',10,'up','Indian seed complex'),
+    scoreMetric('ncdex_cocud_akola',7,'up','Indian seed complex'),
+    scoreMetric('weekly_arrivals',16,'down','Indian supply'),
+    scoreMetric('arrival_till_date',5,'down','Indian supply'),
+    scoreMetric('cci_weekly_sales',12,'down','CCI supply pressure'),
+    scoreMetric('cci_season_sales',5,'down','CCI supply pressure'),
+    scoreMetric('china_3128b',8,'up','China demand'),
+    scoreMetric('zce_cotton',6,'up','China demand'),
+    scoreMetric('zce_yarn',7,'up','Yarn demand'),
+    scoreMetric('usd_inr',4,'up','FX/import parity'),
+    scoreMetric('wti',5,'up','Polyester substitution'),
   ];
   const raw=drivers.reduce((a,b)=>a+b.score,0);
   const score=Math.max(-100,Math.min(100,Math.round(raw)));
@@ -150,6 +187,48 @@ function computeModel(){
   if(score>=25){bias='Bullish / firm comber'; klass='good'} else if(score<=-25){bias='Bearish / soft comber'; klass='bad'} else if(score>5){bias='Mild firm'; klass='good'} else if(score<-5){bias='Mild soft'; klass='bad'}
   return {score,bias,klass,drivers};
 }
+
+function groupScores(drivers){
+  const g={}; drivers.forEach(d=>{g[d.group]=(g[d.group]||0)+d.score}); return g;
+}
+function buildAnalyst(model){
+  const g=groupScores(model.drivers);
+  const byKey=Object.fromEntries(model.drivers.map(d=>[d.key,d]));
+  const ice=(byKey.ice_jul?.pct||0), arrivals=(byKey.weekly_arrivals?.pct||0), cci=(byKey.cci_weekly_sales?.pct||0), china=(byKey.china_3128b?.pct||0), yarn=(byKey.zce_yarn?.pct||0), cocud=(byKey.ncdex_cocud_jun?.pct||0), wti=(byKey.wti?.pct||0);
+  let headline;
+  if(model.score>=25) headline='Comber bias is firm: Indian supply tightness and/or demand signals are stronger than global cotton weakness. Avoid aggressive short selling.';
+  else if(model.score<=-25) headline='Comber bias is soft: global cotton/ICE pressure and weak demand signals dominate. Buy only confirmed lots and avoid excess inventory.';
+  else headline='Comber bias is range-bound: ICE is weak, but Indian supply tightness can keep good-quality comber supported. Trade mill-wise, not blindly.';
+  const thesis=[];
+  thesis.push(`<div class="thesisItem"><strong>1) ICE is the global mood-setter, not the final Indian comber price.</strong><br>ICE Jul move ${ice>=0?'+':''}${ice.toFixed(2)}%. Sharp ICE fall reduces sentiment and import parity, but comber follows Indian spinning-mill waste availability with lag.</div>`);
+  thesis.push(`<div class="thesisItem"><strong>2) Indian arrivals are the strongest local support.</strong><br>Weekly arrivals move ${arrivals>=0?'+':''}${arrivals.toFixed(2)}%. Falling arrivals mean mills get less fresh cotton, so better comber supply becomes tighter after a lag.</div>`);
+  thesis.push(`<div class="thesisItem"><strong>3) CCI sales decide whether supply pressure comes back.</strong><br>Weekly CCI sales move ${cci>=0?'+':''}${cci.toFixed(2)}%. Lower CCI selling = less cotton release = supportive for cotton/comber. Heavy CCI selling would cap rallies.</div>`);
+  thesis.push(`<div class="thesisItem"><strong>4) China + yarn demand tells whether mills can pay.</strong><br>China cotton ${china>=0?'+':''}${china.toFixed(2)}%, ZCE yarn ${yarn>=0?'+':''}${yarn.toFixed(2)}%. If yarn is weak, comber rallies become hard to sustain even with low arrivals.</div>`);
+  thesis.push(`<div class="thesisItem"><strong>5) Cocud and WTI are indirect but useful.</strong><br>Cocud ${cocud>=0?'+':''}${cocud.toFixed(2)}%, WTI ${wti>=0?'+':''}${wti.toFixed(2)}%. Cocud reflects cottonseed complex/farmer economics; WTI/polyester affects substitution pressure.</div>`);
+  const bull=Math.max(10,Math.min(75,Math.round(35+model.score*.45)));
+  const bear=Math.max(10,Math.min(75,Math.round(35-model.score*.45)));
+  const range=Math.max(15,100-bull-bear);
+  const scenarios=[
+    {name:'Firm comber',prob:bull,txt:'Arrivals stay low, CCI selling remains limited, mills need quality comber. Good lots hold premium.'},
+    {name:'Range-bound',prob:range,txt:'ICE weak but local supply tight. Mill-wise rates differ; buy only need-based.'},
+    {name:'Soft comber',prob:bear,txt:'ICE/Cotlook keep falling, yarn demand weakens, CCI releases cotton. Comber bids reduce.'}
+  ];
+  const heat=Object.entries(g).sort((a,b)=>Math.abs(b[1])-Math.abs(a[1]));
+  const action = model.score<=-25 ?
+    `<p><b class="chg down">Action:</b> keep buying slow. Avoid average/weak quality stock. Quote lower bids and wait for sellers unless immediate dispatch is needed.</p><p>For held inventory: reduce open exposure; hedge if quantity is big.</p>` :
+    model.score>=25 ? `<p><b class="chg up">Action:</b> secure quality comber before mills revise offers. Do not sell long delivery without raw-material cover.</p><p>For forward sales: cover against price-rise risk.</p>` :
+    `<p><b class="warn">Action:</b> market is mixed. For good quality comber, bargain but do not delay too much. For average lots, wait.</p><p>Use mill-specific tender/offer behaviour as final confirmation.</p>`;
+  return {headline,thesis,scenarios,heat,action};
+}
+function renderAnalyst(model){
+  const a=buildAnalyst(model);
+  document.getElementById('analystHeadline').innerHTML=a.headline;
+  document.getElementById('analystThesis').innerHTML=a.thesis.join('');
+  document.getElementById('scenarios').innerHTML=a.scenarios.map(x=>`<div class="scenario"><b>${x.name}</b><div class="prob">${x.prob}%</div><div class="meter"><span style="width:${x.prob}%"></span></div><p class="sub">${x.txt}</p></div>`).join('');
+  document.getElementById('heatmap').innerHTML=a.heat.map(([k,v])=>`<div class="heatCell"><div class="label">${k}</div><div class="n ${v>=0?'chg up':'chg down'}">${v>=0?'+':''}${v.toFixed(1)}</div></div>`).join('');
+  document.getElementById('actionFramework').innerHTML=a.action + `<div style="margin-top:10px"><span class="driverTag">Buy signal = arrivals down + CCI sales low + China/yarn stable</span><span class="driverTag">Sell/avoid = ICE down + yarn weak + CCI release high</span><span class="driverTag">Quality premium remains separate</span></div>`;
+}
+
 function render(){
   const model=computeModel();
   document.getElementById('biasText').textContent=model.bias;
@@ -166,6 +245,7 @@ function render(){
   document.getElementById('impactTable').innerHTML='<tr><th>Driver</th><th>Move</th><th>Comber impact</th></tr>'+impactRows.map(r=>`<tr><td>${r[0]}</td><td class="chg ${changeClass(r[1])}">${r[1]>=0?'+':''}${r[1].toFixed(2)}%</td><td class="${r[2]>=0?'chg up':'chg down'}">${r[2]>=0?'+':''}${r[2].toFixed(1)}</td></tr>`).join('');
   document.getElementById('hedgeText').innerHTML = model.score<=-25 ? '<p><b class="chg down">Soft-risk:</b> avoid heavy open stock. If holding comber/cotton, reduce exposure or hedge. Buyers can wait for confirmation unless local supply is tight.</p>' : model.score>=25 ? '<p><b class="chg up">Firm-risk:</b> forward-sale risk is higher. Cover raw material before committing long delivery. Consider call/ICE protection if short physical.</p>' : '<p><b class="warn">Balanced:</b> keep stock light, buy confirmed quality lots, and watch ICE + arrivals for breakout.</p>';
   document.getElementById('dataTable').innerHTML='<tr><th>Metric</th><th>Value</th><th>Prev/Open</th><th>Move</th><th>Source</th></tr>'+feed.metrics.map(m=>{const p=pct(m);return `<tr><td>${m.name}</td><td>${fmt(m.value)} ${m.unit}</td><td>${fmt(m.prev)} ${m.unit}</td><td class="chg ${changeClass(p)}">${p>=0?'+':''}${p.toFixed(2)}%</td><td>${m.source}</td></tr>`}).join('');
+  renderAnalyst(model);
   document.getElementById('renderTime').textContent=new Date().toLocaleString('en-IN');
   drawCharts(model);
 }
