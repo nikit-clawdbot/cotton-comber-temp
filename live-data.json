@@ -1,21 +1,149 @@
 {
   "asOf": "2026-05-23",
   "metrics": [
-    {"key":"cotlook_a","name":"Cotlook A","value":88.00,"prev":90.65,"unit":"¢/lb","source":"Cotlook"},
-    {"key":"fc_index_m","name":"FC Index M","value":89.84,"prev":92.23,"unit":"¢/lb","source":"CTEI/CNCE"},
-    {"key":"brazil_cotton","name":"Brazil Cotton","value":84.70,"prev":83.70,"unit":"¢/lb","source":"CEPEA"},
-    {"key":"ice_jul","name":"ICE Jul-26","value":77.42,"prev":83.70,"unit":"¢/lb","source":"ICE"},
-    {"key":"ice_dec","name":"ICE Dec-26","value":79.33,"prev":83.98,"unit":"¢/lb","source":"ICE"},
-    {"key":"china_3128b","name":"China CC3128B","value":17603,"prev":17703,"unit":"CNY/MT","source":"CNCE"},
-    {"key":"zce_cotton","name":"ZCE Cotton Jul","value":15710,"prev":15905,"unit":"CNY/MT","source":"ZCE"},
-    {"key":"zce_yarn","name":"ZCE Yarn Mar","value":22015,"prev":22090,"unit":"CNY/MT","source":"ZCE"},
-    {"key":"ncdex_cocud_jun","name":"NCDEX Cocud Jun","value":3552,"prev":3555,"unit":"₹/qtl","source":"NCDEX"},
-    {"key":"ncdex_cocud_akola","name":"Cocud Akola Jul","value":3616,"prev":3656,"unit":"₹/qtl","source":"NCDEX"},
-    {"key":"usd_inr","name":"USD/INR","value":95.70,"prev":96.35,"unit":"₹","source":"NSE/FBIL"},
-    {"key":"wti","name":"WTI Jul","value":96.60,"prev":104.38,"unit":"$/bbl","source":"CME"},
-    {"key":"weekly_arrivals","name":"Weekly Arrivals","value":2.35,"prev":2.55,"unit":"lakh bales","source":"CAI est."},
-    {"key":"arrival_till_date","name":"Arrivals T.D.","value":315.00,"prev":312.65,"unit":"lakh bales","source":"CAI est."},
-    {"key":"cci_weekly_sales","name":"CCI weekly sales","value":11600,"prev":18000,"unit":"bales","source":"CCI"},
-    {"key":"cci_season_sales","name":"CCI season sales","value":7031400,"prev":7019800,"unit":"bales","source":"CCI"}
+    {
+      "key": "cotlook_a",
+      "name": "Cotlook A",
+      "value": 88.0,
+      "prev": 90.65,
+      "unit": "\u00a2/lb",
+      "source": "Cotlook",
+      "sourceUrl": "https://www.cotlook.com/prices/cotlook-a-index/"
+    },
+    {
+      "key": "fc_index_m",
+      "name": "FC Index M",
+      "value": 89.84,
+      "prev": 92.23,
+      "unit": "\u00a2/lb",
+      "source": "CTEI/CNCE",
+      "sourceUrl": "http://ctei.cn/"
+    },
+    {
+      "key": "brazil_cotton",
+      "name": "Brazil Cotton",
+      "value": 84.7,
+      "prev": 83.7,
+      "unit": "\u00a2/lb",
+      "source": "CEPEA",
+      "sourceUrl": "https://cepea.org.br/br/indicador/algodao.aspx"
+    },
+    {
+      "key": "ice_jul",
+      "name": "ICE Jul-26",
+      "value": 77.42,
+      "prev": 83.7,
+      "unit": "\u00a2/lb",
+      "source": "ICE",
+      "sourceUrl": "https://www.ice.com/products/254/Cotton-No-2-Futures/data"
+    },
+    {
+      "key": "ice_dec",
+      "name": "ICE Dec-26",
+      "value": 79.33,
+      "prev": 83.98,
+      "unit": "\u00a2/lb",
+      "source": "ICE",
+      "sourceUrl": "https://www.ice.com/products/254/Cotton-No-2-Futures/data"
+    },
+    {
+      "key": "china_3128b",
+      "name": "China CC3128B",
+      "value": 17603,
+      "prev": 17703,
+      "unit": "CNY/MT",
+      "source": "CNCE",
+      "sourceUrl": "http://www.cnce.cn/index.php"
+    },
+    {
+      "key": "zce_cotton",
+      "name": "ZCE Cotton Jul",
+      "value": 15710,
+      "prev": 15905,
+      "unit": "CNY/MT",
+      "source": "ZCE",
+      "sourceUrl": "http://english.czce.com.cn/"
+    },
+    {
+      "key": "zce_yarn",
+      "name": "ZCE Yarn Mar",
+      "value": 22015,
+      "prev": 22090,
+      "unit": "CNY/MT",
+      "source": "ZCE",
+      "sourceUrl": "http://english.czce.com.cn/"
+    },
+    {
+      "key": "ncdex_cocud_jun",
+      "name": "NCDEX Cocud Jun",
+      "value": 3552,
+      "prev": 3555,
+      "unit": "\u20b9/qtl",
+      "source": "NCDEX",
+      "sourceUrl": "https://ncdex.com/index.php/market-watch/live_quotes"
+    },
+    {
+      "key": "ncdex_cocud_akola",
+      "name": "Cocud Akola Jul",
+      "value": 3616,
+      "prev": 3656,
+      "unit": "\u20b9/qtl",
+      "source": "NCDEX",
+      "sourceUrl": "https://ncdex.com/index.php/market-watch/live_quotes"
+    },
+    {
+      "key": "usd_inr",
+      "name": "USD/INR",
+      "value": 95.7,
+      "prev": 96.35,
+      "unit": "\u20b9",
+      "source": "NSE/FBIL",
+      "sourceUrl": "https://www.nseindia.com/currency-getquote?symbol=USDINR"
+    },
+    {
+      "key": "wti",
+      "name": "WTI Jul",
+      "value": 96.6,
+      "prev": 104.38,
+      "unit": "$/bbl",
+      "source": "CME",
+      "sourceUrl": "https://www.cmegroup.com/markets/energy/crude-oil/light-sweet-crude.html"
+    },
+    {
+      "key": "weekly_arrivals",
+      "name": "Weekly Arrivals",
+      "value": 2.35,
+      "prev": 2.55,
+      "unit": "lakh bales",
+      "source": "CAI est.",
+      "sourceUrl": "https://in-cai.in/pages/state-wise-estimates-of-daily-cotton-arrivals"
+    },
+    {
+      "key": "arrival_till_date",
+      "name": "Arrivals T.D.",
+      "value": 315.0,
+      "prev": 312.65,
+      "unit": "lakh bales",
+      "source": "CAI est.",
+      "sourceUrl": "https://in-cai.in/pages/state-wise-estimates-of-daily-cotton-arrivals"
+    },
+    {
+      "key": "cci_weekly_sales",
+      "name": "CCI weekly sales",
+      "value": 11600,
+      "prev": 18000,
+      "unit": "bales",
+      "source": "CCI",
+      "sourceUrl": "https://cotcorp.websteptech.co.uk/domestic-sales"
+    },
+    {
+      "key": "cci_season_sales",
+      "name": "CCI season sales",
+      "value": 7031400,
+      "prev": 7019800,
+      "unit": "bales",
+      "source": "CCI",
+      "sourceUrl": "https://cotcorp.websteptech.co.uk/domestic-sales"
+    }
   ]
 }
