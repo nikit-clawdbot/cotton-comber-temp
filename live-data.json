@@ -145,5 +145,43 @@
       "source": "CCI",
       "sourceUrl": "https://cotcorp.websteptech.co.uk/domestic-sales"
     }
+  ],
+  "comberRegions": [
+    {
+      "region": "North / Panipat",
+      "latest": 129.5,
+      "unit": "\u20b9/kg",
+      "date": "2026-04-09",
+      "source": "Global Cotton Advisory extracted history",
+      "sourceUrl": "https://nikit-clawdbot.github.io/cotton-comber-temp/",
+      "basis": "Panipat comber history"
+    },
+    {
+      "region": "Gujarat / Shine Cotspin Halvad",
+      "latest": 134.0,
+      "unit": "\u20b9/kg ex-mill",
+      "date": "2026-04-09",
+      "source": "Shine Cotspin offer shared by Rsb",
+      "sourceUrl": "https://nikit-clawdbot.github.io/cotton-comber-temp/",
+      "basis": "Comber ex-mill, 3rd week May"
+    },
+    {
+      "region": "South / Tamil Nadu OE belt",
+      "latest": 124.0,
+      "unit": "\u20b9/kg est.",
+      "date": "2026-04-09",
+      "source": "Research estimate from OE/comber market notes",
+      "sourceUrl": "https://nikit-clawdbot.github.io/cotton-comber-temp/",
+      "basis": "regional estimate; validate with mill quotes"
+    },
+    {
+      "region": "Central / Indore-MP trade",
+      "latest": 128.0,
+      "unit": "\u20b9/kg est.",
+      "date": "2026-04-09",
+      "source": "Derived from Panipat + Gujarat landed parity",
+      "sourceUrl": "https://nikit-clawdbot.github.io/cotton-comber-temp/",
+      "basis": "local trade parity estimate; validate before deal"
+    }
   ]
 }
