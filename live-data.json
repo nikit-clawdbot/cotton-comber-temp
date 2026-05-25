@@ -1,12 +1,12 @@
 {
-  "asOf": "2026-05-23",
+  "asOf": "2026-05-25",
   "metrics": [
     {
       "key": "cotlook_a",
       "name": "Cotlook A",
-      "value": 88.0,
+      "value": 88,
       "prev": 90.65,
-      "unit": "\u00a2/lb",
+      "unit": "¢/lb",
       "source": "Cotlook",
       "sourceUrl": "https://www.cotlook.com/prices/cotlook-a-index/"
     },
@@ -15,7 +15,7 @@
       "name": "FC Index M",
       "value": 89.84,
       "prev": 92.23,
-      "unit": "\u00a2/lb",
+      "unit": "¢/lb",
       "source": "CTEI/CNCE",
       "sourceUrl": "http://ctei.cn/"
     },
@@ -24,7 +24,7 @@
       "name": "Brazil Cotton",
       "value": 84.7,
       "prev": 83.7,
-      "unit": "\u00a2/lb",
+      "unit": "¢/lb",
       "source": "CEPEA",
       "sourceUrl": "https://cepea.org.br/br/indicador/algodao.aspx"
     },
@@ -33,7 +33,7 @@
       "name": "ICE Jul-26",
       "value": 77.42,
       "prev": 83.7,
-      "unit": "\u00a2/lb",
+      "unit": "¢/lb",
       "source": "ICE",
       "sourceUrl": "https://www.ice.com/products/254/Cotton-No-2-Futures/data"
     },
@@ -42,7 +42,7 @@
       "name": "ICE Dec-26",
       "value": 79.33,
       "prev": 83.98,
-      "unit": "\u00a2/lb",
+      "unit": "¢/lb",
       "source": "ICE",
       "sourceUrl": "https://www.ice.com/products/254/Cotton-No-2-Futures/data"
     },
@@ -78,7 +78,7 @@
       "name": "NCDEX Cocud Jun",
       "value": 3552,
       "prev": 3555,
-      "unit": "\u20b9/qtl",
+      "unit": "₹/qtl",
       "source": "NCDEX",
       "sourceUrl": "https://ncdex.com/index.php/market-watch/live_quotes"
     },
@@ -87,7 +87,7 @@
       "name": "Cocud Akola Jul",
       "value": 3616,
       "prev": 3656,
-      "unit": "\u20b9/qtl",
+      "unit": "₹/qtl",
       "source": "NCDEX",
       "sourceUrl": "https://ncdex.com/index.php/market-watch/live_quotes"
     },
@@ -96,7 +96,7 @@
       "name": "USD/INR",
       "value": 95.7,
       "prev": 96.35,
-      "unit": "\u20b9",
+      "unit": "₹",
       "source": "NSE/FBIL",
       "sourceUrl": "https://www.nseindia.com/currency-getquote?symbol=USDINR"
     },
@@ -121,7 +121,7 @@
     {
       "key": "arrival_till_date",
       "name": "Arrivals T.D.",
-      "value": 315.0,
+      "value": 315,
       "prev": 312.65,
       "unit": "lakh bales",
       "source": "CAI est.",
@@ -150,7 +150,7 @@
     {
       "region": "North / Panipat",
       "latest": 129.5,
-      "unit": "\u20b9/kg",
+      "unit": "₹/kg",
       "date": "2026-04-09",
       "source": "Global Cotton Advisory extracted history",
       "sourceUrl": "https://nikit-clawdbot.github.io/cotton-comber-temp/",
@@ -158,8 +158,8 @@
     },
     {
       "region": "Gujarat / Shine Cotspin Halvad",
-      "latest": 134.0,
-      "unit": "\u20b9/kg ex-mill",
+      "latest": 134,
+      "unit": "₹/kg ex-mill",
       "date": "2026-04-09",
       "source": "Shine Cotspin offer shared by Rsb",
       "sourceUrl": "https://nikit-clawdbot.github.io/cotton-comber-temp/",
@@ -167,8 +167,8 @@
     },
     {
       "region": "South / Tamil Nadu OE belt",
-      "latest": 124.0,
-      "unit": "\u20b9/kg est.",
+      "latest": 124,
+      "unit": "₹/kg est.",
       "date": "2026-04-09",
       "source": "Research estimate from OE/comber market notes",
       "sourceUrl": "https://nikit-clawdbot.github.io/cotton-comber-temp/",
@@ -176,12 +176,28 @@
     },
     {
       "region": "Central / Indore-MP trade",
-      "latest": 128.0,
-      "unit": "\u20b9/kg est.",
+      "latest": 128,
+      "unit": "₹/kg est.",
       "date": "2026-04-09",
       "source": "Derived from Panipat + Gujarat landed parity",
       "sourceUrl": "https://nikit-clawdbot.github.io/cotton-comber-temp/",
       "basis": "local trade parity estimate; validate before deal"
     }
-  ]
+  ],
+  "fetchNotes": {
+    "officialSources": {
+      "ncdexLive": "https://ncdex.com/index.php/market-watch/live_quotes",
+      "ncdexMis": "https://ncdex.com/index.php/markets/misreport",
+      "ncdexSpot": "https://ncdex.com/index.php/markets/livespot",
+      "caiArrivals": "https://in-cai.in/pages/state-wise-estimates-of-daily-cotton-arrivals",
+      "cciSales": "https://cotcorp.websteptech.co.uk/domestic-sales",
+      "iceCotton": "https://www.ice.com/products/254/Cotton-No-2-Futures/data",
+      "cotlook": "https://www.cotlook.com/prices/cotlook-a-index/",
+      "cepeaBrazil": "https://cepea.org.br/br/indicador/algodao.aspx",
+      "cnceChina": "http://www.cnce.cn/index.php",
+      "fbil": "https://www.fbil.org.in/",
+      "cmeWti": "https://www.cmegroup.com/markets/energy/crude-oil/light-sweet-crude.html"
+    },
+    "warning": "Replace fallback values with parsed official data or paid market-data API where required."
+  }
 }
